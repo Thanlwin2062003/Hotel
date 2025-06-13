@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guest Bookings - Gloria Hotel Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class' };</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans">
+
+<!-- Sidebar -->
+<aside class="w-64 min-h-screen bg-white dark:bg-gray-800 fixed top-0 left-0 shadow border-r border-gray-200 dark:border-gray-700 z-10">
+  <div class="p-6 text-xl font-extrabold">Gloria Hotel</div>
+  <nav class="flex flex-col gap-2 text-sm px-4">
+    <a href="index.html" class="flex items-center gap-2 p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"><i class="fas fa-chart-pie"></i> Dashboard</a>
+    <a href="roommanagement.html" class="flex items-center gap-2 p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"><i class="fas fa-bed"></i> Room Management</a>
+    <a href="resturantbookings.html" class="flex items-center gap-2 p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"><i class="fas fa-utensils"></i> Restaurant Bookings</a>
+    <a href="guestbooking.html" class="flex items-center gap-2 p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"><i class="fas fa-calendar-check"></i> Guest Bookings</a>
+    <a href="messages.html" class="flex items-center gap-2 p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"><i class="fas fa-envelope"></i> Messages</a>
+    <a href="reports.html" class="flex items-center gap-2 p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"><i class="fas fa-chart-line"></i> Reports</a>
+    <a href="settings.html" class="flex items-center gap-2 p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"><i class="fas fa-cogs"></i> Settings</a>
+    <a href="logout.html" class="flex items-center gap-2 p-2 rounded text-red-600 hover:text-red-400"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </nav>
+</aside>
+
+<!-- Main Content -->
+<div class="ml-64">
+  <header class="flex justify-between items-center bg-white dark:bg-gray-900 p-4 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-10">
+    <h1 class="text-xl font-bold">Guest Bookings</h1>
+    <button onclick="document.documentElement.classList.toggle('dark')" class="text-sm bg-gray-200 dark:bg-gray-700 px-4 py-1.5 rounded hover:scale-105 transition">
+      Toggle Theme
+    </button>
+  </header>
+
+  <main class="p-8">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 space-y-6">
+      <h2 class="text-lg font-semibold">Manage Guest Room Bookings</h2>
+      <table id="guestTable" class="w-full border border-gray-300 dark:border-gray-700 text-sm">
+        <thead>
+          <tr class="bg-gray-200 dark:bg-gray-700">
+            <th class="p-2 border">Booking ID</th>
+            <th class="p-2 border">Guest Name</th>
+            <th class="p-2 border">Room Type</th>
+            <th class="p-2 border">Check-in</th>
+            <th class="p-2 border">Check-out</th>
+            <th class="p-2 border">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="p-2 border">#G001</td>
+            <td class="p-2 border">Emma Levi</td>
+            <td class="p-2 border">Standard Twin</td>
+            <td class="p-2 border">2025-06-20</td>
+            <td class="p-2 border">2025-06-23</td>
+            <td class="p-2 border"><button onclick="deleteRow(this)" class="text-red-500 hover:underline">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form id="addGuestForm" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+        <input type="text" id="guestName" placeholder="Guest Name" class="p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600" required>
+        <select id="roomType" required class="p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
+          <option value="">Select Room Type</option>
+          <option>Standard Single</option>
+          <option>Standard Double</option>
+          <option>Standard Twin</option>
+          <option>Standard Family</option>
+        </select>
+        <input type="date" id="checkin" required class="p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
+        <input type="date" id="checkout" required class="p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600">
+        <div class="sm:col-span-2 lg:col-span-4">
+          <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Add Booking</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script>
+  let bookingId = 2;
+  const form = document.getElementById("addGuestForm");
+  const table = document.getElementById("guestTable").getElementsByTagName("tbody")[0];
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = document.getElementById("guestName").value;
+    const room = document.getElementById("roomType").value;
+    const checkin = document.getElementById("checkin").value;
+    const checkout = document.getElementById("checkout").value;
+
+    const row = table.insertRow();
+    row.innerHTML = `
+      <td class="p-2 border">#G00${bookingId++}</td>
+      <td class="p-2 border">${name}</td>
+      <td class="p-2 border">${room}</td>
+      <td class="p-2 border">${checkin}</td>
+      <td class="p-2 border">${checkout}</td>
+      <td class="p-2 border"><button onclick="deleteRow(this)" class="text-red-500 hover:underline">Delete</button></td>
+    `;
+    form.reset();
+  });
+
+  function deleteRow(el) {
+    if (confirm("Delete this booking?")) {
+      el.closest("tr").remove();
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../images/logo.png" type="images/png">
+  <title>Gloria Hotel Jerusalem</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: #fdfaf7;
+      color: #2b2b2b;
+    }
+
+    header {
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #2b2b2b;
+      font-weight: bold;
+    }
+
+    .hero {
+      position: relative;
+      background: url('images/main.png') center/cover no-repeat;
+      color: white;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin: 20px 0 10px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero .top-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background: #000;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hero img {
+      width: 160px;
+      height: auto;
+    }
+
+    .section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .facilities {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .facilities img {
+      width: 32%;
+      border-radius: 8px;
+    }
+
+    .booking {
+      background: #f5f5f5;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .booking input,
+    .booking button {
+      padding: 10px;
+      font-size: 1rem;
+    }
+
+    .health {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .health img {
+      height: 80px;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html">
+  <img src="images/logo.png" alt="Gloria Hotel Logo">
+</a>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="facilities.html">Facilities</a>
+      <a href="accommodation.html">Accommodation</a>
+      <a href="booking.html">Book Now</a>
+       <a href="resturantbookings.html">Restaurant</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <button class="top-button" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">BOOK NOW</button>
+    <h1>Welcome to Gloria Hotel</h1>
+    <p>Located in the heart of Jerusalem's Old City</p>
+  </section>
+
+  <section class="section" id="about">
+    <h2>About Us</h2>
+    <p>The Gloria Hotel is the only tourist-class hotel within the Old City walls, offering comfortable accommodation and warm service since the 1950s.</p>
+  </section>
+
+  <section class="section facilities" id="facilities">
+    <img src="../customer/images/swimming pool.jpg" alt="Swimming Pool">
+    <img src="../customer/images/resturant.jpg" alt="Restaurant Dining Area">
+    <img src="../customer/images/gym.jpg" alt="Fitness Gym">
+  </section>
+
+  <section class="section" id="accommodation">
+    <h2>Accommodation</h2>
+    <p>104 quiet, refurbished rooms with modern facilities and a view over Jerusalem.</p>
+  </section>
+
+  <section class="section booking" id="booking">
+    <h2>Check Room Availability</h2>
+    <label>Check-in: <input type="date" id="checkin"></label>
+    <label>Check-out: <input type="date" id="checkout"></label>
+    <button onclick="checkAvailability()">Search</button>
+  </section>
+
+  <section class="section health" id="health">
+    <div>
+      <h2>Health & Safety</h2>
+      <p>We are committed to ensuring the health and safety of our guests with enhanced cleaning and distancing protocols.</p>
+    </div>
+    <img src="images/safety.png" alt="Health and Safety Icon">
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: info@gloria-hotel.com | Phone: +972 2 6282431</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Gloria Hotel - Jerusalem. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function checkAvailability() {
+      const checkin = document.getElementById('checkin').value;
+      const checkout = document.getElementById('checkout').value;
+      if (!checkin || !checkout) {
+        alert('Please select both check-in and check-out dates.');
+        return;
+      }
+      alert(`Searching for availability from ${checkin} to ${checkout}...`);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../images/logo.png" type="images/png">
+  <title>Facilities - Gloria Hotel Jerusalem</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: #fdfaf7;
+      color: #2b2b2b;
+    }
+
+    header {
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #2b2b2b;
+      font-weight: bold;
+    }
+
+    .section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .facility-images {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .facility-images img {
+      width: 32%;
+      border-radius: 10px;
+    }
+
+    .icon-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-around;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .icon-box {
+      width: 180px;
+      padding: 20px;
+      background-color: #f9f6f2;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .icon-box i {
+      font-size: 36px;
+      color: #8a6d3b;
+      margin-bottom: 10px;
+    }
+
+    .icon-box h3 {
+      margin: 10px 0 5px;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html">
+  <img src="images/logo.png" alt="Gloria Hotel Logo">
+</a>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="facilities.html">Facilities</a>
+      <a href="accommodation.html">Accommodation</a>
+      <a href="booking.html">Book Now</a>
+       <a href="resturantbookings.html">Restaurant</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="section">
+    <h1>Our Facilities</h1>
+    <div class="facility-images">
+      <img src="../customer/images/swimming pool.jpg" alt="Swimming Pool">
+      <img src="../customer/images/resturant.jpg" alt="Restaurant">
+      <img src="../customer/images/gym.jpg" alt="Gym">
+    </div>
+
+    <div class="icon-grid">
+      <div class="icon-box">
+        <i class="fas fa-swimmer"></i>
+        <h3>Swimming Pool</h3>
+        <p>Relax in our crystal-clear pool after a day of exploring.</p>
+      </div>
+      <div class="icon-box">
+        <i class="fas fa-utensils"></i>
+        <h3>Restaurant</h3>
+        <p>Enjoy a range of buffet-style meals with local flavors.</p>
+      </div>
+      <div class="icon-box">
+        <i class="fas fa-dumbbell"></i>
+        <h3>Fitness Center</h3>
+        <p>Stay fit with our modern gym equipment.</p>
+      </div>
+      <div class="icon-box">
+        <i class="fas fa-wifi"></i>
+        <h3>Free Wi-Fi</h3>
+        <p>High-speed internet throughout the property.</p>
+      </div>
+      <div class="icon-box">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Safe & Secure</h3>
+        <p>Enhanced health and safety protocols.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Gloria Hotel - Jerusalem. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
