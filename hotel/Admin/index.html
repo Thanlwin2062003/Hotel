@@ -73,29 +73,33 @@
           const label = usageChart.data.labels[index];
           const value = usageChart.data.datasets[0].data[index];
 
-         if (label === "Rooms") {
-  const roomBreakdown = {
-    "Standard Single": 12,
-    "Standard Double": 10,
-    "Standard Twin": 8,
-    "Standard Family": 6
-  };
+          if (label === "Rooms") {
+            const roomBreakdown = {
+              "Standard Single": 12,
+              "Standard Double": 10,
+              "Standard Twin": 8,
+              "Standard Family": 6
+            };
 
-  let html = `<strong>${value} out of 100 rooms are booked</strong><br><ul>`;
-  for (const type in roomBreakdown) {
-    html += `<li>${type}: ${roomBreakdown[type]} booked</li>`;
-  }
-  html += `</ul><a href="roommanagement.html" class="text-blue-500 underline">➤ View full room list</a>`;
-  chartDetails.innerHTML = html;
+            let html = `<strong>${value} out of 100 rooms are booked</strong><br><ul>`;
+            for (const type in roomBreakdown) {
+              html += `<li>${type}: ${roomBreakdown[type]} booked</li>`;
+            }
+            html += `</ul><a href="roommanagement.html" class="text-blue-500 underline">➤ View full room list</a>`;
+            chartDetails.innerHTML = html;
 
-} else if (label === "Restaurant") {
-  chartDetails.innerHTML = `
-    <strong>${value} tables are reserved today.</strong><br>
-    <a href="resturantbookings.html" class="text-blue-500 underline">➤ View restaurant bookings</a>
-  `;
-}
-        
+          } else if (label === "Restaurant") {
+            chartDetails.innerHTML = `
+              <strong>${value} tables are reserved today.</strong><br>
+              <a href="resturantbookings.html" class="text-blue-500 underline">➤ View restaurant bookings</a>
+            `;
+          }
+        }
+      }
+    }
+  });
 </script>
+
 
 </body>
 </html>
